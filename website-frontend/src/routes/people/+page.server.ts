@@ -1,14 +1,14 @@
 /** @type {import('./$types').PageServerLoad} */
-import { readItems, readSingleton } from '@directus/sdk';
-import { parse } from 'valibot';
-import { People } from '$lib/models/people';
-import { PeopleOverview } from '$lib/models/people_overview';
+import { directusPeople, directusPeopleOverview } from '$lib/server/schema';
 import getDirectusInstance from '$lib/directus';
 
 export async function load({ fetch }) {
 	const directus = await getDirectusInstance(fetch);
+	const people = await directusPeople(directus);
+	const people_overview = await directusPeopleOverview(directus);
+
 	return {
-		people: parse(People, await directus.request(readItems('people'))),
-		people_overview: parse(PeopleOverview, await directus.request(readSingleton('people_overview')))
+		people: people,
+		people_overview: people_overview
 	};
 }

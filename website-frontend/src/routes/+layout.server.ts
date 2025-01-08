@@ -1,12 +1,12 @@
 /** @type {import('./$types').LayoutServerLoad} */
 import getDirectusInstance from '$lib/directus';
-import obtainSchema from '$lib/server/schema';
+import { directusGlobal } from '$lib/server/schema';
 
 export async function load({ fetch }) {
 	const directus = await getDirectusInstance(fetch);
+	const global = await directusGlobal(directus);
 
-	const keys = ['global'];
-	const schema = await obtainSchema(directus, keys);
-
-	return { schema };
+	return {
+		global: global
+	};
 }
