@@ -1,12 +1,12 @@
 /** @type {import('./$types').PageServerLoad} */
-import { readItems } from '@directus/sdk';
-import { parse } from 'valibot';
 import getDirectusInstance from '$lib/directus';
-import { Laboratories } from '$lib/models/laboratories.js';
+import { directusLaboratories } from '$lib/server/schema.js';
 
 export async function load({ fetch }) {
 	const directus = await getDirectusInstance(fetch);
+	const laboratories = await directusLaboratories(directus);
+
 	return {
-		laboratories: parse(Laboratories, await directus.request(readItems('laboratories')))
+		laboratories: laboratories
 	};
 }
