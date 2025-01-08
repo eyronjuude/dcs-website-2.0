@@ -1,6 +1,6 @@
 /** @type {import('./$types').PageServerLoad} */
-import { directusPeople, directusPeopleOverview } from '$lib/server/schema';
 import getDirectusInstance from '$lib/directus';
+import { directusPeople, directusPeopleOverview } from '$lib/server/schema';
 
 export async function load({ fetch }) {
 	const directus = await getDirectusInstance(fetch);

@@ -1,42 +1,29 @@
 /** @type {import('./$types').PageServerLoad} */
-import { readItems } from '@directus/sdk';
-import { parse } from 'valibot';
-import { People } from '$lib/models/people';
 import getDirectusInstance from '$lib/directus';
+import { directusPeople, directusPeopleCategories } from '$lib/server/schema.js';
 import { error } from '@sveltejs/kit';
 
 export async function load({ params, fetch }) {
 	const directus = await getDirectusInstance(fetch);
-	const categorySlug = params.slug;
-
-	const categories = await directus.request(
-		readItems('people_categories', {
-			filter: {
-				title: {
-					_eq: categorySlug
-				}
+	const category = await directusPeopleCategories(directus, {
+		filter: {
+			title: {
+				_eq: params.slug
 			}
-		})
-	);
+		}
+	})
+		.then((res) => res[0])
+		.catch(() => {
+			throw error(404, 'Category not found');
+		});
 
-	if (!categories.length) {
-		throw error(404, 'Category not found');
-	}
-
-	const category = categories[0];
-
-	const people = parse(
-		People,
-		await directus.request(
-			readItems('people', {
-				filter: {
-					category: {
-						_eq: category.title
-					}
-				}
-			})
-		)
-	);
+	const people = await directusPeople(directus, {
+		filter: {
+			category: {
+				_eq: category.title
+			}
+		}
+	});
 
 	return {
 		category,
