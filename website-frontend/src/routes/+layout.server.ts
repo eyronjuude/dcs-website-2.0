@@ -6,7 +6,5 @@ export async function load({ fetch }) {
 	const directus = await getDirectusInstance(fetch);
 	const global = await directusGlobal(directus);
 
-	return {
-		global: global
-	};
+	return { global };
 }

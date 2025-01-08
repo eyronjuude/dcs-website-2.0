@@ -31,7 +31,5 @@ const programs = [
 ];
 
 export function load() {
-	return {
-		programs: programs
-	};
+	return { programs };
 }

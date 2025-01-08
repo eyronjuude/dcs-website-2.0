@@ -9,8 +9,5 @@ export async function load({ fetch }) {
 		sort: ['-date_created']
 	});
 
-	return {
-		global: global,
-		events: events
-	};
+	return { global, events };
 }

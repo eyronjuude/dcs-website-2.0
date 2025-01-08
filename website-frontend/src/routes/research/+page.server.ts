@@ -6,7 +6,5 @@ export async function load({ fetch }) {
 	const directus = await getDirectusInstance(fetch);
 	const laboratories = await directusLaboratories(directus);
 
-	return {
-		laboratories: laboratories
-	};
+	return { laboratories };
 }

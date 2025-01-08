@@ -16,7 +16,6 @@ export async function load({ params, fetch }) {
 		.catch(() => {
 			throw error(404, 'Category not found');
 		});
-
 	const people = await directusPeople(directus, {
 		filter: {
 			category: {
@@ -25,8 +24,5 @@ export async function load({ params, fetch }) {
 		}
 	});
 
-	return {
-		category,
-		people
-	};
+	return { category, people };
 }

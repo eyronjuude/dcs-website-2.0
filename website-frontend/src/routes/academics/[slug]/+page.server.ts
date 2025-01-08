@@ -37,7 +37,5 @@ export function load({ params }) {
 
 	if (!program) error(404);
 
-	return {
-		program
-	};
+	return { program };
 }

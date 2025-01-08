@@ -7,8 +7,5 @@ export async function load({ fetch }) {
 	const people = await directusPeople(directus);
 	const people_overview = await directusPeopleOverview(directus);
 
-	return {
-		people: people,
-		people_overview: people_overview
-	};
+	return { people, people_overview };
 }

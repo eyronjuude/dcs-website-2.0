@@ -33,8 +33,5 @@ export async function load({ params, fetch }) {
 				})
 			: [];
 
-	return {
-		person,
-		laboratories
-	};
+	return { person, laboratories };
 }
