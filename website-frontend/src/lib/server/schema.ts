@@ -1,4 +1,6 @@
 import { Global } from '$lib/models/global';
+import { About } from '$lib/models/about';
+import { AboutPages, type AboutPage } from '$lib/models/about_pages';
 import { Events, type Event } from '$lib/models/event';
 import { People, type Person } from '$lib/models/people';
 import { PeopleOverview } from '$lib/models/people_overview';
@@ -23,6 +25,20 @@ export async function directusGlobal(
 	query?: QueryItem<Schema, Global>
 ) {
 	return parse(Global, await directus.request(readSingleton('global', query)));
+}
+
+export async function directusAbout(
+	directus: RestClient<Schema>,
+	query?: QueryItem<Schema, About>
+) {
+	return parse(About, await directus.request(readSingleton('about', query)));
+}
+
+export async function directusAboutPages(
+	directus: RestClient<Schema>,
+	query?: Query<Schema, AboutPage>
+) {
+	return parse(AboutPages, await directus.request(readItems('about_pages', query)));
 }
 
 export async function directusEvents(directus: RestClient<Schema>, query?: Query<Schema, Event>) {
