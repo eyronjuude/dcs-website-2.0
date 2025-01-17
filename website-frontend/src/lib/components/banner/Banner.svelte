@@ -5,6 +5,7 @@
 	export let title: string;
 	export let background_image: string;
 	export let flexible_content: string;
+	export let text_bottom: number = 24;
 
 	$: deslugify_title = deslugify(title);
 </script>
@@ -16,7 +17,7 @@
 	></div>
 
 	<div
-		class="absolute bottom-24 left-1/2
+		class="absolute bottom-{text_bottom} left-1/2
         -translate-x-1/2 transform text-center text-primary-foreground
         md:left-0 md:max-w-[60vw] md:translate-x-0 md:px-32 md:text-start"
 	>
