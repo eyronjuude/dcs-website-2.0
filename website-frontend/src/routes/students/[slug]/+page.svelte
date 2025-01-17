@@ -9,10 +9,7 @@
 
 <body>
 	{#if page}
-		<Banner
-			title={page.title}
-			flexible_content={''}
-		/>
+		<Banner title={page.title} flexible_content={''} />
 
 		<div class="px-4 py-10 text-base md:px-32">
 			{#if page.flexible_content}

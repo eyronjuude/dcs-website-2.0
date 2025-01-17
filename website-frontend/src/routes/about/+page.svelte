@@ -10,11 +10,7 @@
 
 <body>
 	{#if about}
-		<Banner
-			{title}
-			background_image={''}
-			flexible_content={`This is the ${title} page.`}
-		/>
+		<Banner {title} background_image={''} flexible_content={`This is the ${title} page.`} />
 
 		<div class="prose px-4 py-10 text-base md:px-32">
 			{#if about.flexible_content}

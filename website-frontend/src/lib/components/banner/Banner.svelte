@@ -10,12 +10,12 @@
 	$: text_bottom = from_bottom;
 
 	$: if (from_bottom !== from_bottom) {
-		text_bottom = ((flexible_content) ? 24 : 9);
+		text_bottom = flexible_content ? 24 : 9;
 	}
 
-	$: height = ((flexible_content) ? 45 : 40);
-	$: max_height = ((flexible_content) ? 60 : 50);
-	$: font_size = ((flexible_content) ? 4 : 5);
+	$: height = flexible_content ? 45 : 40;
+	$: max_height = flexible_content ? 60 : 50;
+	$: font_size = flexible_content ? 4 : 5;
 
 	$: deslugify_title = deslugify(title);
 </script>
@@ -33,7 +33,7 @@
 	>
 		<h1 class="text-3xl font-bold md:text-{font_size}xl">{deslugify_title}</h1>
 		{#if flexible_content}
-			<h4 class="hidden text-muted md:block md:mt-4">{@html flexible_content}</h4>
+			<h4 class="hidden text-muted md:mt-4 md:block">{@html flexible_content}</h4>
 		{/if}
 	</div>
 </div>
