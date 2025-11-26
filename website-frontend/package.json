@@ -64,6 +64,6 @@
 		"node-html-parser": "^7.0.1",
 		"sanitize-html": "^2.17.0",
 		"svelte-loading-spinners": "^0.3.6",
-		"valibot": "^0.42.1"
+		"valibot": "^1.2.0"
 	}
 }
